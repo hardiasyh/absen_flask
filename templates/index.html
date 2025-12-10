@@ -1,0 +1,34 @@
+<!doctype html>
+<html><body>
+<h1>Absen Siswa</h1>
+<form method='post' action='/add'>
+<input name='name' placeholder='Nama siswa'>
+<button>Tambah</button>
+</form>
+<form method='post' action='/absen'>
+<table>
+<tr><th>Nama</th><th>Status</th></tr>
+{% for s in students %}
+<tr>
+<td>{{s}}</td>
+<td>
+<select name='{{s}}'>
+<option value=''>-</option>
+<option>hadir</option>
+<option>sakit</option>
+<option>izin</option>
+<option>alpha</option>
+</select>
+</td>
+</tr>
+{% endfor %}
+</table>
+<button>Submit Absen</button>
+</form>
+<h3>Rekap Hari Ini ({{today}})</h3>
+<ul>
+{% for s,st in attendance.items() %}
+<li>{{s}}: {{st}}</li>
+{% endfor %}
+</ul>
+</body></html>
